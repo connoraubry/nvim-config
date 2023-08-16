@@ -14,6 +14,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvi
 
 
 echo "Now run the following commands:"
+echo "  source ~/.bashrc"
 echo "  nvim ."
 echo "  :Ex"
 echo "navigate to lua/connoraubry/packer.nvim; press enter"

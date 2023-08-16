@@ -7,8 +7,6 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 
-
-
 lsp.on_attach(function(client, buffr)
     local opts = {buffer = buffr, remap = false}
 
@@ -16,7 +14,6 @@ lsp.on_attach(function(client, buffr)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
 end)
 
-lsp.setup()
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -24,12 +21,23 @@ local cmap_mappings = lsp.defaults.cmp_mappings({
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),  
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),  
     ['<CR>'] = cmp.mapping.confirm( {select = true }),  
-
-    --['<C-Space>'] = cmp.mapping.complete(),
+    ['<Tab>'] = cmp.mapping.confirm({select = true }),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    
 })
-cmp.setup({
-    mapping = {
-        ['<Tab>'] = cmp.mapping.confirm({select = true }),
-        ['<CR>'] = cmp.mapping.confirm({select = true }),
+
+lsp.setup_nvim_cmp({
+    mapping = cmap_mappings 
+})
+
+lsp.set_preferences({
+    sign_icons = {
+        error = 'E',
+        warn = 'W',
+        hint = 'H',
+        info = 'I'
     }
 })
+
+
+lsp.setup()
