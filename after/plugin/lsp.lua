@@ -1,5 +1,13 @@
 local lsp = require('lsp-zero').preset({})
 
+require("mason").setup()
+require("mason-lspconfig").setup {
+    ensure_installed = {
+        'gopls', 
+        --'jedi_language_server'
+    },
+}
+
 lsp.on_attach(function(client, bufnr)
   -- see :help lsp-zero-keybindings
   -- to learn the available actions
