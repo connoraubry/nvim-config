@@ -1,15 +1,15 @@
-#!/bin/bash
+#!/bin/zsh
 
 # install nvim
-wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
-tar -xvf nvim-linux64.tar.gz
-rm nvim-linux64.tar.gz
+wget https://github.com/neovim/neovim/releases/download/stable/nvim-macos.tar.gz
+tar -xvf nvim-macos.tar.gz
+rm nvim-macos.tar.gz
 
-sudo mv nvim-linux64 /opt/nvim
+sudo mv nvim-macos /opt/nvim
 
 line='export PATH="/opt/nvim/bin:$PATH"'
-grep -qxF "$line" ~/.bashrc || echo $line >> ~/.bashrc
-source ~/.bashrc
+grep -qxF "$line" ~/.zshrc || echo $line >> ~/.zshrc
+source ~/.zshrc
 # install packer
 git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
