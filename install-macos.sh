@@ -1,5 +1,5 @@
 #!/bin/zsh
-
+set -e
 # install nvim
 wget https://github.com/neovim/neovim/releases/download/stable/nvim-macos.tar.gz
 tar -xvf nvim-macos.tar.gz
