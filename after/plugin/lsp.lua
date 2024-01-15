@@ -1,44 +1,63 @@
-local lsp = require('lsp-zero').preset({})
+local lsp_zero = require('lsp-zero')
 
-require("mason").setup()
-require("mason-lspconfig").setup {
-    ensure_installed = {
-        'gopls', 
-        --'jedi_language_server'
-    },
-}
-
-lsp.on_attach(function(client, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp.default_keymaps({buffer = bufnr})
-end)
-
-
-lsp.on_attach(function(client, buffr)
+lsp_zero.on_attach(function(client, buffr)
     local opts = {buffer = buffr, remap = false}
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
 end)
 
+require("mason").setup({})
+require("mason-lspconfig").setup {
+    ensure_installed = {'gopls'},
+    handlers = {
+        lsp_zero.default_setup,
+    }
+}
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmap_mappings = lsp.defaults.cmp_mappings({
-    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),  
-    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),  
-    ['<CR>'] = cmp.mapping.confirm( {select = true }),  
-    ['<Tab>'] = cmp.mapping.confirm({select = true }),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    
+local cmp_action = require("lsp-zero").cmp_action()
+cmp.setup({
+    sources = {
+        {name = 'path'},
+        {name = 'nvim_lsp'},
+        -- {name = 'nvim_lua'},
+        {name = 'luasnip', keyword_length = 2},
+        {name = 'buffer', keyword_length = 3},
+    },
+    -- snippet = {
+    --     expand = function(args)
+    --         require('luasnip').lsp_expand(args.body)
+    --     end,
+    -- },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+        ['<CR>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true 
+        }),  
+
+        ['<C-Space>'] = cmp.mapping.complete(),
+
+        ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+        ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+
+        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),  
+        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select), 
+        -- ['<Tab>'] = cmp.mapping.confirm({select = true }),
+
+        -- Scroll up and down in the completion documentation
+        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    })
 })
 
-lsp.setup_nvim_cmp({
-    mapping = cmap_mappings 
-})
 
-lsp.set_preferences({
+lsp_zero.set_preferences({
     sign_icons = {
         error = 'E',
         warn = 'W',
@@ -48,4 +67,4 @@ lsp.set_preferences({
 })
 
 
-lsp.setup()
+lsp_zero.setup()

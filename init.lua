@@ -1,1 +1,3 @@
-require("connoraubry")
+require("config")
+
+vim.cmd.colorscheme("gruvbox")
