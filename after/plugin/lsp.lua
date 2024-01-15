@@ -2,18 +2,20 @@ local lsp_zero = require('lsp-zero')
 
 lsp_zero.on_attach(function(client, buffr)
     local opts = {buffer = buffr, remap = false}
+    lsp_zero.default_keymaps({buffer = bufnr})
+
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
 end)
 
 require("mason").setup({})
-require("mason-lspconfig").setup {
-    ensure_installed = {'gopls'},
+require("mason-lspconfig").setup({
+    ensure_installed = {'gopls', 'pylsp'},
     handlers = {
         lsp_zero.default_setup,
     }
-}
+})
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -40,6 +42,10 @@ cmp.setup({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true 
         }),  
+        ['<Tab>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true 
+        }),  
 
         ['<C-Space>'] = cmp.mapping.complete(),
 
@@ -56,15 +62,8 @@ cmp.setup({
     })
 })
 
-
-lsp_zero.set_preferences({
-    sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
-    }
-})
+-- require("luasnip.loaders.from_vscode").lazy_load()
 
 
-lsp_zero.setup()
+
+-- lsp_zero.setup()
