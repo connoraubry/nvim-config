@@ -1,1 +1,1 @@
-require("connoraubry")
+require("config")
