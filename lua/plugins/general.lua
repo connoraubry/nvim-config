@@ -6,7 +6,12 @@ return {
             vim.cmd.colorscheme("gruvbox")
         end
     },
-    { "fatih/vim-go"},
+    {
+        "fatih/vim-go"
+    },
+    {
+        "wellle/targets.vim"
+    },
     {
         "windwp/nvim-autopairs",
         opts = {},
@@ -24,7 +29,7 @@ return {
     },
     {
         "lukas-reineke/indent-blankline.nvim",
-        main = "ibl", 
+        main = "ibl",
         opts = {}
     },
     {
@@ -32,4 +37,7 @@ return {
         opts = {}
     },
 
+    {
+        "mbbill/undotree",
+    }
 }
