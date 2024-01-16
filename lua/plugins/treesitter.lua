@@ -11,5 +11,10 @@ return {
             additional_vim_regex_highlighting = false,
         },
         autotag = { enable = true},
-    }
+    },
+    dependencies = {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+    },
+    build = ":TSUpdate",
+
 }

@@ -1,6 +1,11 @@
 return {
     -- add gruvbox
-    { "morhetz/gruvbox" },
+    {
+        "morhetz/gruvbox",
+        config = function()
+            vim.cmd.colorscheme("gruvbox")
+        end
+    },
     { "fatih/vim-go"},
     {
         "windwp/nvim-autopairs",
@@ -12,8 +17,7 @@ return {
     },
     {
         "nvim-lualine/lualine.nvim",
-        -- opts = {},
-        -- lazy = false,
+        opts = {},
     },
     {
         "nvim-tree/nvim-web-devicons"
@@ -25,8 +29,7 @@ return {
     },
     {
         "numToStr/Comment.nvim",
-        opts = {},
-        lazy = false,
+        opts = {}
     },
 
 }
