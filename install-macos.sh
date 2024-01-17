@@ -1,9 +1,9 @@
 #!/bin/bash
-set -euxo pipefail
+set -exo pipefail
 
-TARGET_SHELL_RC="~/.bashrc"
+TARGET_SHELL_RC=~/.bashrc
 if [[ -n "$ZSH_VERSION" ]]; then
-    TARGET_SHELL_RC="~/.zshrc"
+    TARGET_SHELL_RC=~/.zshrc
 fi
 
 # install nvim
