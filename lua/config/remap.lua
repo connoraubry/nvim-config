@@ -11,8 +11,6 @@ vim.keymap.set("n", "<leader>j", "<C-w>j", {desc = "Go to below window"})
 vim.keymap.set("n", "<leader>k", "<C-w>k", {desc = "Go to above window"})
 vim.keymap.set("n", "<leader>l", "<C-w>l", {desc = "Go to right window"})
 
-
-
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
@@ -39,7 +37,6 @@ vim.keymap.set("v", "<leader>d", "\"_d")
 
 -- getting rid of some keys
 vim.keymap.set("n", "Q", "<nop>")
-
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
