@@ -1,7 +1,6 @@
 # nvim-config
 
-A little nvim configuration repo to sync across devices. Super basic stuff -- maybe I'll add more features in the future. 
-
+A little nvim configuration repo to sync across devices.
 
 Adapted from [kickstart-modular.nvim](https://github.com/dam9000/kickstart-modular.nvim)
 
@@ -14,4 +13,22 @@ make
 fzf
 ```
 
+## Installation
 
+```bash
+git clone https://github.com/connoraubry/nvim-config ~/.config/nvim
+```
+
+If on linux / wsl 
+```bash
+cd ~/.config/nvim 
+./install.sh
+source ~/.bashrc
+```
+
+If on macos
+```bash
+cd ~/.config/nvim 
+./install-macos.sh
+source ~/.zshrc
+```
