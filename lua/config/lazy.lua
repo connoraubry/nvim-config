@@ -21,7 +21,10 @@ require("lazy").setup({
     version = false,
   },
   -- install = { colorscheme = {"gruvbox"}},
-  checker = { enabled = true},
+  checker = {
+    enabled = true,
+    frequency = 86400, -- check every day 
+  },
   performance = {
     rtp = {
       disabled_plugins = {

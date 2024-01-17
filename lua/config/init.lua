@@ -1,4 +1,4 @@
-require("config.set")
+require("config.options")
 require("config.remap")
 
 -- load lazy, plugins

@@ -60,7 +60,7 @@ require('telescope').setup {
       previewer = false,
     })
   end, { desc = '[/] Fuzzily search in current buffer' })
-  
+
   local function telescope_live_grep_open_files()
     require('telescope.builtin').live_grep {
       grep_open_files = true,
@@ -70,7 +70,7 @@ require('telescope').setup {
   vim.keymap.set('n', '<leader>f/', telescope_live_grep_open_files, { desc = '[F]ind [/] in Open Files' })
   vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = '[F]ind [F]iles' })
   vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
-  vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[F]ind by [G]rep' })
+  vim.keymap.set('n', '<leader>fs', require('telescope.builtin').live_grep, { desc = '[F]ind [S]earch (using grep)' })
   vim.keymap.set('n', '<leader>fG', ':LiveGrepGitRoot<cr>', { desc = '[F]ind by [G]rep on Git Root' })
   vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = '[F]ind [H]elp' })
   vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[F]ind current [W]ord' })

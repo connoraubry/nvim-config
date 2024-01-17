@@ -120,3 +120,7 @@ mason_lspconfig.setup_handlers {
 vim.diagnostic.config({
     virtual_text = false,
 })
+
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, {desc = "Open diagnostic window"})
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {desc = "Goto previous diagnostic"})
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {desc = "Goto next diagnostic"})
