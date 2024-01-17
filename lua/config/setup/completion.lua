@@ -48,19 +48,19 @@ cmp.setup {
     -- { name = 'luasnip' },
     { name = 'path' },
   },
-  formatting = {
-    expandable_indicator = true,
-    fields = {'menu', 'abbr', 'kind'},
-    format = function(entry, item)
-      local menu_icon = {
-        nvim_lsp = 'λ',
-        luasnip = '⋗',
-        buffer = 'Ω',
-        path = '🖫',
-      }
-      item.menu = menu_icon[entry.source.name]
-      return item
-    end,
-  },
+  -- formatting = {
+  --   expandable_indicator = true,
+  --   fields = {'menu', 'abbr', 'kind'},
+  --   format = function(entry, item)
+  --     local menu_icon = {
+  --       nvim_lsp = 'λ',
+  --       luasnip = '⋗',
+  --       buffer = 'Ω',
+  --       path = '🖫',
+  --     }
+  --     item.menu = menu_icon[entry.source.name]
+  --     return item
+  --   end,
+  -- },
 }
 

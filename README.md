@@ -4,3 +4,11 @@ A little nvim configuration repo to sync across devices. Super basic stuff -- ma
 
 
 Adapted from [https://github.com/dam9000/kickstart-modular.nvim](kickstart-modular.nvim) 
+
+## Requirements
+
+packages
+```
+ripgrep
+make
+```
