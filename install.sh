@@ -2,7 +2,7 @@
 set -euxo pipefail
 
 TARGET_SHELL_RC="~/.bashrc"
-if [[ -n "ZSH_VERSION" ]]; then
+if [[ -n "$ZSH_VERSION" ]]; then
     TARGET_SHELL_RC="~/.zshrc"
 fi
 

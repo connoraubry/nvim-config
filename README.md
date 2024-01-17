@@ -11,4 +11,7 @@ packages
 ```
 ripgrep
 make
+fzf
 ```
+
+
