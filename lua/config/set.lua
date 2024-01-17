@@ -20,7 +20,7 @@ vim.opt.termguicolors = true
 
 -- scroll options
 vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "number"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
