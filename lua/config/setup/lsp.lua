@@ -83,21 +83,21 @@ local servers = {
     pylsp = {
       plugins = {
         pycodestyle = {
-          -- enabled = false,
-          ignore = {
+          enabled = true,
+          ignore = { 
             -- "E128", -- continuation line under-indented for visual indent
             -- "E226", -- missing whitespace around arithmetic operator
             -- "E262", -- no space after inline comment start '# '
             -- "E265", -- no space after block comment start '# ' 
-            -- "E302", -- expected 2 blank lines around function/class
+            "E302", -- expected 2 blank lines around function/class
             -- "E501", -- line too long
             -- "E502", -- backslash is redundant between brackets
             -- "W293", -- blank line contains whitespace
           },
           -- maxLineLength = 120,
         },
-        mccabe = { -- disable the following three lines to get rid of "cyclomatic complexity"
-          -- enabled = false
+        mccabe = {
+          enabled = true -- set to false to get rid of "cyclomatic complexity"
         }
       }
     }
