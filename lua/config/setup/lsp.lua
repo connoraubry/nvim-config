@@ -90,6 +90,7 @@ local servers = {
             -- "E262", -- no space after inline comment start '# '
             -- "E265", -- no space after block comment start '# ' 
             "E302", -- expected 2 blank lines around function/class
+            "E305", -- expected 2 
             -- "E501", -- line too long
             -- "E502", -- backslash is redundant between brackets
             -- "W293", -- blank line contains whitespace

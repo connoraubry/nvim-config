@@ -11,7 +11,9 @@ packages
 ripgrep
 make
 fzf
+node
 ```
+
 
 ## Installation
 
