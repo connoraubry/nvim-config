@@ -84,11 +84,11 @@ local servers = {
       plugins = {
         pycodestyle = {
           enabled = true,
-          ignore = { 
+          ignore = {
             -- "E128", -- continuation line under-indented for visual indent
-            -- "E226", -- missing whitespace around arithmetic operator
-            -- "E262", -- no space after inline comment start '# '
-            -- "E265", -- no space after block comment start '# ' 
+            "E226", -- missing whitespace around arithmetic operator
+            "E262", -- no space after inline comment start '# '
+            "E265", -- no space after block comment start '# ' 
             "E302", -- expected 2 blank lines around function/class
             "E305", -- expected 2 
             -- "E501", -- line too long
