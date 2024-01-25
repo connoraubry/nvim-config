@@ -46,5 +46,8 @@ return {
     opts = {
       use_diagnostic_signs = true,
     },
+  },
+  {
+    "tpope/vim-surround"
   }
 }
