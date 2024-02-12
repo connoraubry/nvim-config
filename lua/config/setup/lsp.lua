@@ -95,7 +95,7 @@ local servers = {
             -- "E502", -- backslash is redundant between brackets
             -- "W293", -- blank line contains whitespace
           },
-          -- maxLineLength = 120,
+          maxLineLength = 120,
         },
         mccabe = {
           enabled = true -- set to false to get rid of "cyclomatic complexity"
