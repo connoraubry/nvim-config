@@ -14,8 +14,10 @@ rm nvim-linux64.tar.gz
 if [[ "$EUID" -eq 0 ]]; then
     #if root
     mv nvim-linux64 /opt/nvim
+    apt install -y ripgrep
 else
     sudo mv nvim-linux64 /opt/nvim
+    sudo apt install -y ripgrep
 fi
 
 line='export PATH="/opt/nvim/bin:$PATH"'
