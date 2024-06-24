@@ -5,3 +5,4 @@ require("config.remap")
 require("config.lazy")
 
 require("config.setup")
+require("config.lualine")
