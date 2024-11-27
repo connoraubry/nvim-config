@@ -77,26 +77,42 @@ require('mason-lspconfig').setup()
 local servers = {
   -- clangd = {},
   gopls = {},
-  pyright = {},
+  -- pyright = {},
   pylsp = {
     -- https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
     pylsp = {
       plugins = {
+        -- formatters
+        -- black = { enabled = true },
+        -- autopep8 = {enabled = false },
+        -- yapf = { enabled = false },
+        -- linters
+        -- pylint = {
+        --   enabled = true,
+        --   executable = 'pylint'
+        -- },
+        -- pyflakes = { enabled = false },
         pycodestyle = {
           enabled = true,
           ignore = {
             -- "E128", -- continuation line under-indented for visual indent
-            "E226", -- missing whitespace around arithmetic operator
+            -- "E226", -- missing whitespace around arithmetic operator
             "E262", -- no space after inline comment start '# '
             "E265", -- no space after block comment start '# ' 
             "E302", -- expected 2 blank lines around function/class
-            "E305", -- expected 2 
+            "E305", -- expected 2 spaces before comment
             -- "E501", -- line too long
-            -- "E502", -- backslash is redundant between brackets
+            "E502", -- backslash is redundant between brackets
             -- "W293", -- blank line contains whitespace
           },
           maxLineLength = 120,
         },
+        -- typechecker
+        pylsp_mypy = { enabled = true },
+        --auto completion 
+        jedi_completion = { enabled = true },
+        --import sorting
+        pyls_isort = { enabled = true },
         mccabe = {
           enabled = true -- set to false to get rid of "cyclomatic complexity"
         }
