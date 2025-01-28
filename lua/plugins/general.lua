@@ -1,7 +1,7 @@
 return {
   -- add gruvbox
   {
-    "morhetz/gruvbox",
+    "ellisonleao/gruvbox.nvim",
     config = function()
         vim.cmd.colorscheme("gruvbox")
     end
@@ -49,6 +49,9 @@ return {
     },
   },
   {
-    "tpope/vim-surround"
+    "tpope/vim-surround",
+  },
+  {
+    "tpope/vim-unimpaired",
   }
 }

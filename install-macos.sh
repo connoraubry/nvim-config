@@ -7,15 +7,15 @@ if [[ -n "$ZSH_VERSION" ]]; then
 fi
 
 # install nvim
-wget https://github.com/neovim/neovim/releases/download/stable/nvim-macos.tar.gz
-tar -xvf nvim-macos.tar.gz
-rm nvim-macos.tar.gz
+wget https://github.com/neovim/neovim/releases/latest/download/nvim-macos-arm64.tar.gz
+tar -xvf nvim-macos-arm64.tar.gz
+rm nvim-macos-arm64.tar.gz
 
 if [[ "$EUID" -eq 0 ]]; then
     #if root
-    mv nvim-linux64 /opt/nvim
+    mv nvim-macos-arm64 /opt/nvim
 else
-    sudo mv nvim-linux64 /opt/nvim
+    sudo mv nvim-macos-arm64 /opt/nvim
 fi
 
 line='export PATH="/opt/nvim/bin:$PATH"'
