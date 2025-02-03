@@ -7,16 +7,16 @@ if [[ -n "$ZSH_VERSION" ]]; then
 fi
 
 # install nvim
-wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
-tar -xvf nvim-linux64.tar.gz
-rm nvim-linux64.tar.gz
+wget https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+tar -xvf nvim-linux-x86_64.tar.gz
+rm nvim-linux-x86_64.tar.gz
 
 if [[ "$EUID" -eq 0 ]]; then
     #if root
-    mv nvim-linux64 /opt/nvim
+    mv nvim-linux-x86_64 /opt/nvim
     apt install -y ripgrep
 else
-    sudo mv nvim-linux64 /opt/nvim
+    sudo mv nvim-linux-x86_64 /opt/nvim
     sudo apt install -y ripgrep
 fi
 
