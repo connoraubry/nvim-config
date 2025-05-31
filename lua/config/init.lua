@@ -6,3 +6,4 @@ require("config.lazy")
 
 require("config.setup")
 require("config.lualine")
+require("config.filetypes")
