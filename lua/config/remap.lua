@@ -48,3 +48,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+vim.keymap.set("n", "<leader>tt", ":TodoTelescope<CR>", {desc = "[T}odo [T]elescope"})
+vim.keymap.set("n", "<leader>tq", ":TodoQuickFix<CR>", {desc = "[T}odo [Q]uick"})
