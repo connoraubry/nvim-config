@@ -1,3 +1,11 @@
 plugin
 nvim-linux64
 lazy-lock.json
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
