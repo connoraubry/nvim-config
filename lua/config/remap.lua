@@ -4,13 +4,13 @@ vim.keymap.set("n", "<leader>pd", vim.cmd.Ex, { desc = "Print directory" })
 
 --window navigation
 --
-vim.keymap.set("n", "<leader>w", "<C-w>w", { desc = "Change active window" })
-vim.keymap.set("n", "<leader>v", "<C-w>v", { desc = "Vertical split" })
+-- vim.keymap.set("n", "<leader>w", "<C-w>w", { desc = "Change active window" })
+-- vim.keymap.set("n", "<leader>v", "<C-w>v", { desc = "Vertical split" })
 -- vim.keymap.set("n", "<leader>s", "<C-w>s", { desc = "Horizontal split" })
 -- vim.keymap.set("n", "<leader>h", "<C-w>h", { desc = "Go to left window" })
-vim.keymap.set("n", "<leader>j", "<C-w>j", { desc = "Go to below window" })
-vim.keymap.set("n", "<leader>k", "<C-w>k", { desc = "Go to above window" })
-vim.keymap.set("n", "<leader>l", "<C-w>l", { desc = "Go to right window" })
+-- vim.keymap.set("n", "<leader>j", "<C-w>j", { desc = "Go to below window" })
+-- vim.keymap.set("n", "<leader>k", "<C-w>k", { desc = "Go to above window" })
+-- vim.keymap.set("n", "<leader>l", "<C-w>l", { desc = "Go to right window" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
