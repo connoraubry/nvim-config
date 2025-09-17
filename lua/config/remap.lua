@@ -7,6 +7,7 @@ vim.keymap.set("n", "<leader>pd", vim.cmd.Ex, {desc = "Print directory"})
 vim.keymap.set("n", "<leader>w", "<C-w>w", {desc = "Change active window"})
 vim.keymap.set("n", "<leader>v", "<C-w>v", {desc = "Vertical split"})
 vim.keymap.set("n", "<leader>s", "<C-w>s", {desc = "Horizontal split"})
+
 vim.keymap.set("n", "<leader>h", "<C-w>h", {desc = "Go to left window"})
 vim.keymap.set("n", "<leader>j", "<C-w>j", {desc = "Go to below window"})
 vim.keymap.set("n", "<leader>k", "<C-w>k", {desc = "Go to above window"})
@@ -43,6 +44,7 @@ vim.keymap.set("n", "Q", "<nop>")
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking text',
   callback = function()
     vim.highlight.on_yank()
   end,
