@@ -17,6 +17,7 @@ return {
 	},
 	{
 		"ellisonleao/gruvbox.nvim",
+		priority = 1000,
 		config = function()
 			vim.cmd.colorscheme("gruvbox")
 		end,
@@ -32,6 +33,7 @@ return {
 	},
 	{
 		"windwp/nvim-autopairs",
+		event = "InsertEnter",
 		opts = {},
 	},
 	{
@@ -118,5 +120,34 @@ return {
 	},
 	{
 		"tpope/vim-abolish",
+	},
+	{ -- Add indentation guides even on blank lines
+		"lukas-reineke/indent-blankline.nvim",
+		-- Enable `lukas-reineke/indent-blankline.nvim`
+		-- See `:help ibl`
+		main = "ibl",
+		opts = {},
+	},
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		version = "*",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		},
+		lazy = false,
+		keys = {
+			{ "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal", silent = true },
+		},
+		opts = {
+			filesystem = {
+				window = {
+					mappings = {
+						["\\"] = "close_window",
+					},
+				},
+			},
+		},
 	},
 }
