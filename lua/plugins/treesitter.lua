@@ -1,38 +1,43 @@
 return {
-	{
+	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		lazy = false,
-		branch = "master",
+		main = "nvim-treesitter.configs", -- Sets main module to use for opts
+		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 		opts = {
 			ensure_installed = {
-				"css",
-				"c",
-				"vim",
-				"query",
-				"rust",
-				"lua",
-				"go",
-				"python",
-				"javascript",
-				"markdown",
-				"vim",
 				"bash",
+				"c",
+				"diff",
+				"go",
+				"css",
+				"python",
+				"query",
+				"javascript",
 				"vue",
 				"html",
-				"tsx",
-				"typescript",
+				"lua",
+				"luadoc",
+				"markdown",
+				"markdown_inline",
+				"query",
+				"vim",
+				"toml",
+				"yaml",
+				"json",
+				"vimdoc",
 			},
-			auto_install = true,
 			sync_install = false,
+			auto_install = true,
 			highlight = {
-				enabled = true,
-				additional_vim_regex_highlighting = { "markdown" },
+				enable = true,
+				-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+				--  If you are experiencing weird indenting issues, add the language to
+				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
+				additional_vim_regex_highlighting = false,
 			},
-			autotag = { enable = true },
-			indent = { enable = true },
-
-			-- not sure what this does
+			indent = { enable = true, disable = { "ruby" } },
 			incremental_selection = {
 				enable = true,
 				keymaps = {
@@ -42,7 +47,7 @@ return {
 					node_decremental = "<M-space>",
 				},
 			},
-			-- make sure it's usable
+
 			textobjects = {
 				select = {
 					enable = true,
