@@ -1,5 +1,5 @@
 vim.filetype.add({
-  extension = {
-    mathml = "html",
-  }
+	extension = {
+		mathml = "html",
+	},
 })
