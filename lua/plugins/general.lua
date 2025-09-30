@@ -148,7 +148,23 @@ return {
 						["\\"] = "close_window",
 					},
 				},
+				filtered_items = {
+					visible = true, -- hide filtered items on open
+					hide_gitignored = true,
+					hide_dotfiles = false,
+					hide_by_name = {
+						".github",
+						".gitignore",
+						"package-lock.json",
+						".changeset",
+						".prettierrc.json",
+					},
+					never_show = { ".git" },
+				},
 			},
 		},
+	},
+	{
+		"fatih/vim-go",
 	},
 }
