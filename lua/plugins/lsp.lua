@@ -179,6 +179,10 @@ return {
 				},
 			})
 
+			vim.keymap.set("n", "<leader>e", function()
+				vim.diagnostic.open_float({ source = true })
+			end, { desc = "Open diagnostic window" })
+
 			-- LSP servers and clients are able to communicate to each other what features they support.
 			--  By default, Neovim doesn't support everything that is in the LSP specification.
 			--  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -198,6 +202,7 @@ return {
 				-- clangd = {},
 				gopls = {},
 				pyright = {},
+				templ = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
@@ -205,7 +210,7 @@ return {
 				--    https://github.com/pmizio/typescript-tools.nvim
 				--
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
-				-- ts_ls = {},
+				ts_ls = {},
 				--
 
 				lua_ls = {
