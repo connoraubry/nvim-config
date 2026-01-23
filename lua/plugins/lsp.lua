@@ -227,6 +227,16 @@ return {
 						},
 					},
 				},
+				pylsp = {
+					plugins = {
+						pycodestyle = {
+							ignore = {
+								"E501", --line too long
+							},
+							maxlinelength = 120,
+						},
+					},
+				},
 			}
 
 			-- Ensure the servers and tools above are installed
