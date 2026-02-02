@@ -53,3 +53,17 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.keymap.set("n", "<leader>tt", ":TodoTelescope<CR>", { desc = "[T}odo [T]elescope" })
 vim.keymap.set("n", "<leader>tq", ":TodoQuickFix<CR>", { desc = "[T}odo [Q]uick" })
+
+vim.keymap.set("n", "<leader>zz", function()
+	vim.opt_local.spell = not vim.opt_local.spell:get()
+	local status = vim.opt_local.spell:get() and "enabled" or "disabled"
+	vim.notify("Spell " .. status)
+end, { desc = "Toggle Spellcheck" })
+
+vim.keymap.set("n", "<leader>zn", "]s", { desc = "Next spell error" })
+vim.keymap.set("n", "<leader>zp", "[s", { desc = "Prev spell error" })
+vim.keymap.set("n", "<leader>za", "zg", { desc = "Add word to dictionary" })
+vim.keymap.set("n", "<leader>zr", "zw", { desc = "Remove word (mark wrong)" })
+vim.keymap.set("n", "<leader>zf", function()
+	require("telescope.builtin").spell_suggest()
+end, { desc = "Fix spelling (Telescope)" })
