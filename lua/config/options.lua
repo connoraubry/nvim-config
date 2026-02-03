@@ -46,6 +46,7 @@ vim.opt.confirm = true
 
 vim.opt.spelllang = "en_us"
 vim.opt.spelloptions = "camel"
+vim.opt.spellcapcheck = ""
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "*",
@@ -55,3 +56,4 @@ vim.api.nvim_create_autocmd("FileType", {
 		end
 	end,
 })
+vim.api.nvim_set_hl(0, "SpellBad", { undercurl = true, sp = "red" })
