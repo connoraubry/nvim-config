@@ -149,7 +149,7 @@ return {
 					},
 				},
 				filtered_items = {
-					visible = true, -- hide filtered items on open
+					visible = false, -- hide filtered items on open
 					hide_gitignored = true,
 					hide_dotfiles = false,
 					hide_by_name = {
@@ -158,6 +158,12 @@ return {
 						"package-lock.json",
 						".changeset",
 						".prettierrc.json",
+					},
+					always_show = {
+						".gitignore",
+					},
+					always_show_by_pattern = {
+						".env*",
 					},
 					never_show = { ".git" },
 				},
