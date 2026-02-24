@@ -1,7 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-vim.keymap.set("n", "<leader>pd", vim.cmd.Ex, { desc = "Print directory" })
+-- vim.keymap.set("n", "<leader>pd", vim.cmd.Ex, { desc = "Print directory" })
+vim.keymap.set("n", "<leader>pd", "<Nop>", { desc = "Print directory" })
 
 --window navigation
 vim.keymap.set("n", "<leader>wv", "<C-w>v<C-w>w", { desc = "Open Vertical window, change" })

@@ -7,7 +7,8 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
-vim.opt.smartindent = true
+-- let treesitter handle indent
+-- vim.opt.smartindent = true
 
 vim.opt.wrap = true
 vim.opt.linebreak = true
