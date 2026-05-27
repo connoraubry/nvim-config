@@ -7,8 +7,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
--- let treesitter handle indent
--- vim.opt.smartindent = true
+vim.opt.smartindent = true
 
 vim.opt.wrap = true
 vim.opt.linebreak = true
@@ -58,3 +57,12 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 vim.api.nvim_set_hl(0, "SpellBad", { undercurl = true, sp = "red" })
+
+-- folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldcolumn = "0"
+vim.opt.foldtext = ""
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 1
+vim.opt.foldnestmax = 4
