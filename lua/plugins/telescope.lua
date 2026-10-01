@@ -57,34 +57,11 @@ return {
 		pcall(require("telescope").load_extension, "fzf")
 		pcall(require("telescope").load_extension, "ui-select")
 
-		-- Telescope live_grep in git root
-		-- Function to find the git root directory based on the current buffer's path
-		local function find_git_root()
-			-- Use the current buffer's path as the starting point for the git search
-			local current_file = vim.api.nvim_buf_get_name(0)
-			local current_dir
-			local cwd = vim.fn.getcwd()
-			-- If the buffer is not associated with a file, return nil
-			if current_file == "" then
-				current_dir = cwd
-			else
-				-- Extract the directory from the current file's path
-				current_dir = vim.fn.fnamemodify(current_file, ":h")
-			end
-
-			-- Find the Git root directory from the current file's path
-			local git_root =
-				vim.fn.systemlist("git -C " .. vim.fn.escape(current_dir, " ") .. " rev-parse --show-toplevel")[1]
-			if vim.v.shell_error ~= 0 then
-				print("Not a git repository. Searching on current working directory")
-				return cwd
-			end
-			return git_root
-		end
+		local diff_base = require("config.diff_base")
 
 		-- Custom live_grep function to search in git root
 		local function live_grep_git_root()
-			local git_root = find_git_root()
+			local git_root = diff_base.find_git_root()
 			if git_root then
 				require("telescope.builtin").live_grep({
 					search_dirs = { git_root },
@@ -92,6 +69,53 @@ return {
 			end
 		end
 		vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
+
+		-- Telescope picker listing files changed vs a single git revision
+		-- (working tree included), with a diff preview and <CR> to open the file.
+		local function diff_files_picker(spec)
+			local git_root = diff_base.find_git_root()
+			local results = vim.fn.systemlist({ "git", "-C", git_root, "diff", "--name-only", spec.rev })
+			if vim.v.shell_error ~= 0 then
+				vim.notify("git diff failed: " .. table.concat(results, "\n"), vim.log.levels.ERROR)
+				return
+			end
+			if spec.include_untracked then
+				local untracked = vim.fn.systemlist({ "git", "-C", git_root, "ls-files", "--others", "--exclude-standard" })
+				vim.list_extend(results, untracked)
+			end
+			if #results == 0 then
+				vim.notify("No changed files (" .. spec.title .. ")", vim.log.levels.INFO)
+				return
+			end
+
+			local pickers = require("telescope.pickers")
+			local finders = require("telescope.finders")
+			local conf = require("telescope.config").values
+			local previewers = require("telescope.previewers")
+			local actions = require("telescope.actions")
+			local action_state = require("telescope.actions.state")
+
+			pickers
+				.new({}, {
+					prompt_title = spec.title,
+					finder = finders.new_table({ results = results }),
+					sorter = conf.generic_sorter({}),
+					previewer = previewers.new_termopen_previewer({
+						get_command = function(entry)
+							return { "git", "-C", git_root, "diff", spec.rev, "--", entry.value }
+						end,
+					}),
+					attach_mappings = function(prompt_bufnr)
+						actions.select_default:replace(function()
+							local entry = action_state.get_selected_entry()
+							actions.close(prompt_bufnr)
+							vim.cmd("edit " .. git_root .. "/" .. entry.value)
+						end)
+						return true
+					end,
+				})
+				:find()
+		end
 
 		-- See `:help telescope.builtin`
 		local builtin = require("telescope.builtin")
@@ -114,6 +138,31 @@ return {
 		vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "[F]ind [H]elp" })
 		vim.keymap.set("n", "<leader>fw", require("telescope.builtin").grep_string, { desc = "[F]ind current [W]ord" })
 		vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers, { desc = "[F]ind [B]uffers" })
+
+		-- [F]ind [C]hanged files vs whatever diff base is currently active
+		-- (see <leader>gw / <leader>g1 / <leader>gm below).
+		vim.keymap.set("n", "<leader>fc", function()
+			if diff_base.current == "worktree" then
+				builtin.git_status()
+				return
+			end
+			local spec = diff_base.spec()
+			if not spec then
+				vim.notify("Could not resolve diff base", vim.log.levels.ERROR)
+				return
+			end
+			diff_files_picker(spec)
+		end, { desc = "[F]ind [C]hanged files (vs current diff base)" })
+
+		vim.keymap.set("n", "<leader>gw", function()
+			diff_base.set("worktree")
+		end, { desc = "[G]it diff base: [W]orking tree" })
+		vim.keymap.set("n", "<leader>g1", function()
+			diff_base.set("HEAD~1")
+		end, { desc = "[G]it diff base: HEAD~[1]" })
+		vim.keymap.set("n", "<leader>gm", function()
+			diff_base.set("main")
+		end, { desc = "[G]it diff base: [M]ain" })
 
 		-- Slightly advanced example of overriding default behavior and theme
 		vim.keymap.set("n", "<leader>/", function()
