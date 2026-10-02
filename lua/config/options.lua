@@ -47,6 +47,8 @@ vim.opt.confirm = true
 vim.opt.spelllang = "en_us"
 vim.opt.spelloptions = "camel"
 vim.opt.spellcapcheck = ""
+-- Keep personal spell additions out of the (tracked) config dir.
+vim.opt.spellfile = vim.fn.stdpath("state") .. "/spell/en.utf-8.add"
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "*",
