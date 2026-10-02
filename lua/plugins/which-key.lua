@@ -49,6 +49,7 @@ return {
 				{ "<leader>t", group = "[T]oggle" },
 				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 				{ "<leader>z", group = "Spell" },
+				{ "<leader>n", group = "[N]otes" },
 			},
 		},
 		keys = {
