@@ -47,9 +47,13 @@ return {
 			spec = {
 				{ "<leader>s", group = "[S]earch" },
 				{ "<leader>t", group = "[T]oggle" },
-				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 				{ "<leader>z", group = "Spell" },
 				{ "<leader>n", group = "[N]otes" },
+				{ "<leader>f", group = "[F]ind" },
+				{ "<leader>g", group = "[G]it diff base" },
+				{ "<leader>w", group = "[W]indow" },
+				{ "<leader>x", group = "Trouble/Diagnostics" },
+				{ "<leader>c", group = "[C]ode" },
 			},
 		},
 		keys = {
